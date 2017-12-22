@@ -11,25 +11,34 @@
     </parent>
 
     <artifactId>piston-ignition</artifactId>
-    <name>Piston Start</name>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Piston Ignition</name>
 
     <dependencies>
         <dependency>
             <groupId>org.laxio.piston</groupId>
+            <artifactId>piston-api</artifactId>
+            <version>1.12.2-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.laxio.piston</groupId>
             <artifactId>stickypiston</artifactId>
             <version>1.12.2-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.laxio.piston</groupId>
             <artifactId>protocol</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <piston.sticky.version>1.12.2-SNAPSHOT</piston.sticky.version>
         <piston.protocol.version>0.0.1-SNAPSHOT</piston.protocol.version>
-        <buildtag.prefix>git-PistonStart-</buildtag.prefix>
+        <buildtag.prefix>git-PistonIgnition-</buildtag.prefix>
     </properties>
 
     <build>
@@ -57,17 +66,17 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Main-Class>org.laxio.piston.PistonStart</Main-Class>
+                            <Main-Class>org.laxio.piston.ignition.PistonIgnition</Main-Class>
                             <Implementation-Title>StickyPiston</Implementation-Title>
                             <Implementation-Version>${api.version}</Implementation-Version>
                             <Implementation-Vendor>${maven.build.timestamp}</Implementation-Vendor>
-                            <Specification-Title>StickyPiston</Specification-Title>
-                            <Specification-Version>${api.version}</Specification-Version>
+                            <Specification-Title>Piston</Specification-Title>
+                            <Specification-Version>${parent.piston-api.version}</Specification-Version>
                             <Specification-Vendor>Laxio Team</Specification-Vendor>
                         </manifestEntries>
                         <manifestSections>
                             <manifestSection>
-                                <name>org/laxio/</name>
+                                <name>org.laxio.piston.ignition</name>
                                 <manifestEntries>
                                     <Sealed>true</Sealed>
                                 </manifestEntries>
@@ -75,6 +84,19 @@
                         </manifestSections>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -86,5 +108,11 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>
