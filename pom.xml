@@ -10,7 +10,7 @@
         <version>1.12.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>piston-start</artifactId>
+    <artifactId>piston-ignition</artifactId>
     <name>Piston Start</name>
 
     <dependencies>
