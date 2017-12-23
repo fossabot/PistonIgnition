@@ -49,6 +49,7 @@
                 <version>0.2</version>
                 <configuration>
                     <format>${buildtag.prefix}%s${buildtag.suffix}</format>
+                    <scmDirectory>../.git/modules/piston-ignition/</scmDirectory>
                 </configuration>
                 <executions>
                     <execution>
