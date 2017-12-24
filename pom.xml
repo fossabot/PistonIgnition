@@ -64,14 +64,12 @@
                 <version>3.0.2</version>
                 <configuration>
                     <archive>
+                        <!--suppress MavenModelInspection -->
                         <manifestEntries>
                             <Main-Class>org.laxio.piston.ignition.PistonIgnition</Main-Class>
                             <Implementation-Title>StickyPiston</Implementation-Title>
                             <Implementation-Version>${api.version}</Implementation-Version>
                             <Implementation-Vendor>${maven.build.timestamp}</Implementation-Vendor>
-                            <Specification-Title>Piston</Specification-Title>
-                            <Specification-Version>${parent.piston-api.version}</Specification-Version>
-                            <Specification-Vendor>Laxio Team</Specification-Vendor>
                         </manifestEntries>
                         <manifestSections>
                             <manifestSection>
