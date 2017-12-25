@@ -2,10 +2,9 @@ package org.laxio.piston.ignition;
 
 import org.laxio.piston.piston.versioning.PistonModule;
 import org.laxio.piston.piston.versioning.PistonModuleType;
-import org.laxio.piston.protocol.v001.netty.NetworkServer;
+import org.laxio.piston.protocol.v340.netty.NetworkServer;
 import org.laxio.piston.sticky.StickyInitiator;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class PistonIgnition {
