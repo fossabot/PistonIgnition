@@ -2,8 +2,10 @@ package org.laxio.piston.ignition;
 
 import org.laxio.piston.piston.versioning.PistonModule;
 import org.laxio.piston.piston.versioning.PistonModuleType;
+import org.laxio.piston.protocol.v340.StickyProtocolV340;
 import org.laxio.piston.protocol.v340.netty.NetworkServer;
 import org.laxio.piston.sticky.StickyInitiator;
+import org.laxio.piston.sticky.StickyPistonServer;
 
 import java.net.InetSocketAddress;
 
@@ -17,7 +19,8 @@ public class PistonIgnition {
             System.out.println(module.getTitle() + ": " + module.getVersion());
         }
 
-        new NetworkServer(new InetSocketAddress("0.0.0.0", 25565)).run();
+        StickyPistonServer server = new StickyPistonServer(new StickyProtocolV340());
+        new NetworkServer(server, new InetSocketAddress("0.0.0.0", 25565)).run();
         Thread.sleep(Integer.MAX_VALUE);
     }
 
