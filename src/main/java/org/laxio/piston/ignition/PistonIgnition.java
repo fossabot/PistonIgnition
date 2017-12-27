@@ -20,7 +20,10 @@ public class PistonIgnition {
         }
 
         StickyPistonServer server = new StickyPistonServer(new StickyProtocolV340());
-        new NetworkServer(server, new InetSocketAddress("0.0.0.0", 25565)).run();
+        NetworkServer network = new NetworkServer(server, new InetSocketAddress("0.0.0.0", 25565));
+        server.setNetwork(network);
+        network.run();
+        
         Thread.sleep(Integer.MAX_VALUE);
     }
 
