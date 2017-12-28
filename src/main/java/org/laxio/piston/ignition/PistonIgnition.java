@@ -24,10 +24,12 @@ public class PistonIgnition {
     public static void main(String[] args) throws Exception {
         StickyInitiator.setup();
 
+        /*
         for (PistonModuleType type : PistonModuleType.values()) {
             PistonModule module = type.getModule();
             System.out.println(module.getTitle() + ": " + module.getVersion());
         }
+        */
 
         System.out.print(ChatColor.RESET.toConsole());
         ConsoleHandler console = new ConsoleHandler();
