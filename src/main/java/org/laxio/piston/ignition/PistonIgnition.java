@@ -18,7 +18,6 @@ import org.laxio.piston.sticky.logging.LogUtil;
 
 import java.net.InetSocketAddress;
 import java.util.logging.ConsoleHandler;
-import java.util.logging.Logger;
 
 public class PistonIgnition {
 
@@ -39,7 +38,7 @@ public class PistonIgnition {
         NetworkServer network = new NetworkServer(server, new InetSocketAddress("0.0.0.0", 25565));
         server.setNetwork(network);
         network.run();
-        
+
         // Thread.sleep(Integer.MAX_VALUE);
 
         TerminalBuilder builder = TerminalBuilder.builder();

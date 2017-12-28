@@ -19,6 +19,7 @@ public class ConsoleLogHandler extends ConsoleHandler {
         super.publish(record);
     }
 
-    public synchronized void flush() {}
+    public synchronized void flush() {
+    }
 
 }
