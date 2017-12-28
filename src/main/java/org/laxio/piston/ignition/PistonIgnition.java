@@ -7,8 +7,6 @@ import org.jline.terminal.TerminalBuilder;
 import org.laxio.piston.ignition.console.AphelionCommandHandler;
 import org.laxio.piston.ignition.console.CommandReader;
 import org.laxio.piston.piston.chat.ChatColor;
-import org.laxio.piston.piston.versioning.PistonModule;
-import org.laxio.piston.piston.versioning.PistonModuleType;
 import org.laxio.piston.protocol.v340.StickyProtocolV340;
 import org.laxio.piston.protocol.v340.netty.NetworkServer;
 import org.laxio.piston.sticky.StickyInitiator;
