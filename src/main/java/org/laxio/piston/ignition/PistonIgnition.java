@@ -43,6 +43,7 @@ public class PistonIgnition {
 
         TerminalBuilder builder = TerminalBuilder.builder();
         builder.jansi(true);
+        builder.dumb(true);
 
         Terminal terminal = builder.build();
         LineReader reader = LineReaderBuilder.builder().terminal(terminal).build();
