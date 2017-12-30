@@ -16,6 +16,7 @@ import org.laxio.piston.sticky.logging.LogUtil;
 
 import java.net.InetSocketAddress;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Logger;
 
 public class PistonIgnition {
 
@@ -31,6 +32,7 @@ public class PistonIgnition {
 
         System.out.print(ChatColor.RESET.toConsole());
         ConsoleHandler console = new ConsoleHandler();
+        console.setLevel(Logger.getGlobal().getLevel());
         console.setFormatter(new ConsoleFormatter());
         LogUtil.init(console);
 
