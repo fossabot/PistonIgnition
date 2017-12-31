@@ -7,6 +7,7 @@ import org.jline.terminal.TerminalBuilder;
 import org.laxio.piston.ignition.console.AphelionCommandHandler;
 import org.laxio.piston.ignition.console.CommandReader;
 import org.laxio.piston.piston.chat.ChatColor;
+import org.laxio.piston.piston.util.Environment;
 import org.laxio.piston.protocol.v340.StickyProtocolV340;
 import org.laxio.piston.protocol.v340.netty.NetworkServer;
 import org.laxio.piston.sticky.StickyInitiator;
@@ -16,6 +17,7 @@ import org.laxio.piston.sticky.logging.LogUtil;
 
 import java.net.InetSocketAddress;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PistonIgnition {
@@ -29,6 +31,10 @@ public class PistonIgnition {
             System.out.println(module.getTitle() + ": " + module.getVersion());
         }
         */
+
+        if (!Environment.isDebugMode()) {
+            Logger.getGlobal().setLevel(Level.INFO);
+        }
 
         System.out.print(ChatColor.RESET.toConsole());
         ConsoleHandler console = new ConsoleHandler();
