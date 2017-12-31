@@ -6,6 +6,7 @@ import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 import org.laxio.piston.ignition.console.AphelionCommandHandler;
 import org.laxio.piston.ignition.console.CommandReader;
+import org.laxio.piston.piston.ServerManager;
 import org.laxio.piston.piston.chat.ChatColor;
 import org.laxio.piston.piston.util.Environment;
 import org.laxio.piston.protocol.v340.StickyProtocolV340;
@@ -42,10 +43,19 @@ public class PistonIgnition {
         console.setFormatter(new ConsoleFormatter());
         LogUtil.init(console);
 
-        StickyPistonServer server = new StickyPistonServer(new StickyProtocolV340());
-        NetworkServer network = new NetworkServer(server, new InetSocketAddress("0.0.0.0", 25565));
-        server.setNetwork(network);
-        network.run();
+        StickyPistonServer serv = null;
+        for (int i = 0; i < 5; i++) {
+            StickyPistonServer server = new StickyPistonServer(new StickyProtocolV340(), "MC" + String.format("%03d", i + 1));
+            NetworkServer network = new NetworkServer(server, new InetSocketAddress("0.0.0.0", 25565 + i));
+            server.setNetwork(network);
+            server.start();
+
+            ServerManager.getInstance().addServer(server);
+
+            if (serv == null) {
+                serv = server;
+            }
+        }
 
         // Thread.sleep(Integer.MAX_VALUE);
 
@@ -56,7 +66,7 @@ public class PistonIgnition {
         Terminal terminal = builder.build();
         LineReader reader = LineReaderBuilder.builder().terminal(terminal).build();
 
-        AphelionCommandHandler handler = new AphelionCommandHandler(server);
+        AphelionCommandHandler handler = new AphelionCommandHandler(serv);
         CommandReader command = new CommandReader(reader, handler);
         command.run();
     }
