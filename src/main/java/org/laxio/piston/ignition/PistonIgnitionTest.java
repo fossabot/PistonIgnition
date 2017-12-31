@@ -8,7 +8,7 @@ import org.laxio.piston.piston.util.Environment;
 public class PistonIgnitionTest {
 
     public static void main(String[] args) throws Exception {
-        Environment.setDebugMode(true);
+        Environment.setIDE(true);
         PistonIgnition.main(args);
     }
 

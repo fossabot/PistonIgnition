@@ -26,13 +26,6 @@ public class PistonIgnition {
     public static void main(String[] args) throws Exception {
         StickyInitiator.setup();
 
-        /*
-        for (PistonModuleType type : PistonModuleType.values()) {
-            PistonModule module = type.getModule();
-            System.out.println(module.getTitle() + ": " + module.getVersion());
-        }
-        */
-
         if (!Environment.isDebugMode()) {
             Logger.getGlobal().setLevel(Level.INFO);
         }
@@ -43,6 +36,7 @@ public class PistonIgnition {
         console.setFormatter(new ConsoleFormatter());
         LogUtil.init(console);
 
+        ServerManager manager = ServerManager.getInstance();
         StickyPistonServer serv = null;
         for (int i = 0; i < 5; i++) {
             StickyPistonServer server = new StickyPistonServer(new StickyProtocolV340(), "MC" + String.format("%03d", i + 1));
@@ -50,14 +44,12 @@ public class PistonIgnition {
             server.setNetwork(network);
             server.start();
 
-            ServerManager.getInstance().addServer(server);
+            manager.addServer(server);
 
             if (serv == null) {
                 serv = server;
             }
         }
-
-        // Thread.sleep(Integer.MAX_VALUE);
 
         TerminalBuilder builder = TerminalBuilder.builder();
         builder.jansi(true);
